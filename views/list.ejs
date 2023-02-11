@@ -1,0 +1,46 @@
+<!-- here instead of writing html boilerplate to every ejs page we have just created header.ejs and footer.ejs pages and copied our header and footer section 
+in that pages so we dont want to include every time when we create a new page -->
+<%-include("header") -%>  
+
+
+    <!-- below we have used <%  %> sciptlet tag which is used to execute the js code in html page scriptlet tag only let you use for control flow and no output -->
+
+
+    <!-- here kindOfDay is a marker where value is set by app.js server -->
+    <div class="box" id="heading">
+        <h1>
+            <%= listTitle %>
+        </h1>
+    </div>
+
+    <div class="box">
+        <% for(var i=0; i<newListItem.length;i++){ %>
+            <div class="item">
+                <input type="checkbox">
+                <p>
+                    <%= newListItem[i] %>
+                </p>
+                <!-- following code is written to just add elements one after other when we enter something in textfield it will go inside the items array which 
+         we have created on our server and we have took for loop to show every newly added elements on page
+          -->
+            </div>
+
+            <% } %>
+
+                <form class="item" action="/" method="post">
+                    <!-- here input entered by user in the textField is send to server app.js where action is done towards home root and method post is used to post data in input field -->
+
+                    <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+
+                    <button type="submit" name="list" value=<%= listTitle %>>+</button>
+
+                </form>
+    </div>
+
+
+
+
+    <!-- here form is created to post the content to app.js i.e is our server     -->
+
+
+    <%-include("footer") -%>    
